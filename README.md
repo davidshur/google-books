@@ -1,4 +1,6 @@
-# Create React Express App
+# google-books
+
+This App is deployed live on [Heroku](https://mern-books-123.herokuapp.com/)
 
 ## About This Boilerplate
 
