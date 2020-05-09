@@ -20,10 +20,15 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-mongoose.connect(process.env.MONGODB_URI, {
+const db = process.env.MONGODB_URI;
+
+mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+})
+  .then(() => console.log('Connected to DB...'))
+  .catch(err => console.log(err));
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
