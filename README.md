@@ -2,13 +2,13 @@
 
 This App is deployed live on [Heroku](https://mern-books-123.herokuapp.com/)
 
-## About This Boilerplate
+## Installation
 
 This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
 
 The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
 
-## Starting the app locally
+## Usage
 
 Start by installing front and backend dependencies. While in this directory, run the following command:
 
