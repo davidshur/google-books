@@ -5,8 +5,8 @@ import Results from './Results';
 
 const Search = () => (
     <Container>
-    <BookSearch />
-    <Results />
+<BookSearch />
+<Results />
     </Container>
 );
 
