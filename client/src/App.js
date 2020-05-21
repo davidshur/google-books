@@ -1,17 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Saved from './components/Saved';
+import Search from './components/Search';
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/Navigation';
 
 const App = () => (
-  <div className="App">
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>Welcome to React</h2>
-    </div>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
-  </div>
+  <Router>
+    <Navigation />
+    <Switch>
+      <Route exact path='/' component={Saved} />
+      <Route path='/search' component={Search} />
+    </Switch>
+  </Router>
 );
 
 

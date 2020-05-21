@@ -29,8 +29,6 @@ mongoose.connect(db, {
   .then(() => console.log('Connected to DB...'))
   .catch(err => console.log(err));
 
-app.use('/api/books', books);
-
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
