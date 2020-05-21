@@ -10,8 +10,8 @@ const App = () => (
   <Router>
     <Navigation />
     <Switch>
-      <Route exact path='/' component={Saved} />
-      <Route path='/search' component={Search} />
+      <Route exact path='/' component={Search} />
+      <Route exact path='/saved' component={Saved} />
     </Switch>
   </Router>
 );
