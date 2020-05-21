@@ -16,8 +16,12 @@ const ResultCard = (props) => (
         {props.book.description}
       </Card.Text>
       <div className='float-right'>
-        <Button variant="outline-secondary" className="mr-2">View</Button>
-        <Button variant="secondary">Save</Button>
+        <a href={props.book.link}><Button variant="outline-secondary" className="mr-2">View</Button></a>
+        {
+          props.variant === 'search'
+            ? <Button variant="secondary">Save</Button>
+            : <Button variant="secondary">Delete</Button>
+        }
       </div>
     </Card.Body>
   </Card>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import ResultCard from './ResultCard';
+import BookCard from './BookCard';
 
 const books = [
     {
@@ -21,14 +21,14 @@ const books = [
 ];
 
 
-const Results = () => (
+const Results = (props) => (
     <Card className="mb-4">
         <Card.Body>
             <Card.Title>
-                Results
+                {props.title}
             </Card.Title>
             {
-                books.map(book => <ResultCard book={book} />)
+                books.map(book => <BookCard book={book} variant={props.variant} />)
             }
         </Card.Body>
     </Card>
