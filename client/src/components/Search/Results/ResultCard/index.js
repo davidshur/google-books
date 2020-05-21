@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const ResultCard = (props) => (
@@ -14,6 +15,10 @@ const ResultCard = (props) => (
       <Card.Text>
         {props.book.description}
       </Card.Text>
+      <div className='float-right'>
+        <Button variant="outline-secondary" className="mr-2">View</Button>
+        <Button variant="secondary">Save</Button>
+      </div>
     </Card.Body>
   </Card>
 );
