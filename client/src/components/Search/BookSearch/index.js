@@ -5,7 +5,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 const BookSearch = () => (
-    <Card>
+    <Card className="mb-4">
         <Card.Body>
             <Card.Title>
                 Book Search
