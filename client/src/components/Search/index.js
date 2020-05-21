@@ -21,7 +21,6 @@ class Search extends Component {
             `https://www.googleapis.com/books/v1/volumes?q=${val}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
         );
         const books = await res.data.items;
-        console.log(books);
 
         this.setState({ books, loading: false });
     }
