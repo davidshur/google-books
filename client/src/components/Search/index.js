@@ -31,7 +31,7 @@ class Search extends Component {
     }
 
     get renderBooks() {
-        let books = <h1>There are no books...</h1>;
+        let books = <span></span>
         if (this.state.books) {
             books = <Results title="Results" variant="search" list={this.state.books} />
         }
