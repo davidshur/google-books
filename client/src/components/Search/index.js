@@ -31,12 +31,8 @@ class Search extends Component {
     }
 
     get renderBooks() {
-        let books = <span></span>
-        if (this.state.books) {
-            books = <Results title="Results" variant="search" list={this.state.books} />
-        }
-
-        return books;
+        if (!this.state.books) return <span></span>;
+        return <Results title="Results" variant="search" list={this.state.books} />;
     }
 
     render() {
