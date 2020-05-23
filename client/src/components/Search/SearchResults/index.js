@@ -9,7 +9,7 @@ const SearchResults = (props) => (
                 Results
             </Card.Title>
             {
-                props.list.map(book => <SearchedBook book={book} key={book._id} />)
+                props.list.map(book => <SearchedBook book={book} key={book.id} />)
             }
         </Card.Body>
     </Card>
