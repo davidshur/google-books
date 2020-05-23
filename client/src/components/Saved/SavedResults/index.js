@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import BookCard from './BookCard';
+import BookCard from './SavedBook';
 
 const Results = (props) => (
     <Card className="mb-4">

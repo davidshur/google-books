@@ -10,13 +10,17 @@ class Saved extends Component {
         value: ''
     };
 
+    componentDidMount() {
+        this.search();
+    }
+
     search = async val => {
         this.setState({ loading: true });
         const res = await axios(
             '/api/books'
         );
-        const books = await res.data.items;
-
+        const books = await res.data;
+        console.log(res);
         this.setState({ books, loading: false });
     }
 

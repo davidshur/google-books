@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from'react-bootstrap/InputGroup';
-import Results from '../Results';
+import SearchResults from './SearchResults';
 
 require('dotenv').config();
 
@@ -32,7 +32,7 @@ class Search extends Component {
 
     get renderBooks() {
         if (!this.state.books) return <span></span>;
-        return <Results title="Results" variant="search" list={this.state.books} />;
+        return <SearchResults list={this.state.books} />;
     }
 
     render() {
