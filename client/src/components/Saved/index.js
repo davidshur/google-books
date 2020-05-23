@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Results from '../Results';
 import Container from 'react-bootstrap/Container';
+import Results from '../Results';
 
 class Saved extends Component {
     state = {
@@ -10,15 +10,14 @@ class Saved extends Component {
         value: ''
     };
 
-    search = () => {
+    search = async val => {
         this.setState({ loading: true });
+        const res = await axios(
+            '/api/books'
+        );
+        const books = await res.data.items;
 
-        this.setState({ loading: false });
-    }
-
-    onChangeHandler = async e => {
-        this.search(e.target.value);
-        this.setState({ value: e.target.value });
+        this.setState({ books, loading: false });
     }
 
     get renderBooks() {
