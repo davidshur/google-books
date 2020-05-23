@@ -6,46 +6,34 @@ import Card from 'react-bootstrap/Card';
 class ResultCard extends Component {
   constructor(props) {
     super(props);
-    this.saveBook = this.saveBook.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
   }
 
-  saveBook() {
-    axios.post('/api/books', {
-      title: this.props.book.volumeInfo.title,
-      authors: this.props.book.volumeInfo.authors,
-      description: this.props.book.volumeInfo.description,
-      image: this.props.book.volumeInfo.imageLinks.thumbnail,
-      link: this.props.book.volumeInfo.infoLink
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+  deleteBook() {
+    axios.delete(`/api/books/${this.props.book._id}`);
   }
 
   render() {
     return (
-      <Card>
+      <Card className="mb-2">
         <Card.Body>
           <div className='float-right'>
-            <a href={this.props.book.volumeInfo.infoLink}><Button variant="outline-secondary" className="mr-2">View</Button></a>
-            {
-              this.props.variant === 'search'
-                ? <Button variant="secondary" onClick={this.saveBook}>Save</Button>
-                : <Button variant="secondary">Delete</Button>
-            }
+            <a href={this.props.book.link}><Button variant="outline-secondary" className="mr-2">View</Button></a>
+            <Button variant="secondary" onClick={this.deleteBook}>Delete</Button>
           </div>
           <Card.Title>
-            {this.props.book.volumeInfo.title}
+            {this.props.book.title}
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Written by {this.props.book.volumeInfo.authors}
+            Written by {this.props.book.authors}
           </Card.Subtitle>
           {
-            this.props.book.volumeInfo.imageLinks === undefined
+            this.props.book.link === undefined
               ? <span></span>
-              : <img className="float-left mr-4" src={this.props.book.volumeInfo.imageLinks.thumbnail} alt={this.props.book.volumeInfo.title} />
+              : <img className="float-left mr-4" src={this.props.book.image} alt={this.props.book.title} />
           }
           <Card.Text>
-            {this.props.book.volumeInfo.description}
+            {this.props.book.description}
           </Card.Text>
         </Card.Body>
       </Card>

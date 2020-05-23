@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import Results from '../Results';
+import SavedResults from './SavedResults';
 
 class Saved extends Component {
     state = {
@@ -28,7 +28,7 @@ class Saved extends Component {
         if (!this.state.books) {
             return <h4>No saved books.</h4>;
         }
-        return <Results title="Saved Books" variant="saved" list={this.state.books} />;
+        return <SavedResults title="Saved Books" variant="saved" list={this.state.books} />;
     }
 
     render() {

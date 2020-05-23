@@ -23,7 +23,7 @@ class SearchedBook extends Component {
 
   render() {
     return (
-      <Card>
+      <Card className="mb-2">
         <Card.Body>
           <div className='float-right'>
             <a href={this.props.book.volumeInfo.infoLink}><Button variant="outline-secondary" className="mr-2">View</Button></a>

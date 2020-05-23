@@ -9,7 +9,7 @@ const Results = (props) => (
                 {props.title}
             </Card.Title>
             {
-                props.list.map(book => <BookCard book={book} key={book.id} variant={props.variant} />)
+                props.list.map(book => <BookCard book={book} key={book._id} variant={props.variant} />)
             }
         </Card.Body>
     </Card>
