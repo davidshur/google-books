@@ -1,12 +1,11 @@
 const express = require("express");
+
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const path = require("path");
-const PORT = process.env.PORT || 3001;
+const routes = require('./routes')
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-const books = require('./routes/books');
-
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +15,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(routes);
+
 const db = process.env.MONGODB_URI;
 
 mongoose.connect(db, {
@@ -24,18 +25,6 @@ mongoose.connect(db, {
 })
   .then(() => console.log('Connected to DB...'))
   .catch(err => console.log(err));
-
-app.get('/api/books', (req, res) => {
-  res.send('Get');
-});
-
-app.post('/api/books', (req, res) => {
-  res.send('Post');
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
