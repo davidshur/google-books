@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -10,8 +11,7 @@ class Saved extends Component {
         this.state = {
             books: null,
             loading: false,
-            value: '',
-            color: 'black'
+            value: ''
         };
 
         this.deleteBook = this.deleteBook.bind(this);
@@ -22,10 +22,11 @@ class Saved extends Component {
     }
 
     deleteBook(id) {
-        axios.delete(`/api/books/${id}`)
+        axios.delete(`/api/books/${id}`);
+        this.search();
     }
 
-    search = async val => {
+    search = async () => {
         this.setState({ loading: true });
         const res = await axios(
             '/api/books'
@@ -39,38 +40,29 @@ class Saved extends Component {
         if (!this.state.books) {
             return <h4>No saved books.</h4>;
         }
+
         return (
             <Card className="mb-4">
                 <Card.Body>
-                    {
-                        this.state.color === 'black'
-                            ?
-                                <Card.Title>
-                                    Saved Books
-                                </Card.Title>
-                            :
-                                <Card.Title style={{color: 'red'}}>
-                                    Saved Books
-                                </Card.Title>
-                    }
-                    { this.state.books.map(book =>
+                    <Card.Title>
+                        Saved Books
+                    </Card.Title>
+                    {this.state.books.map(book =>
                         <Card key={book._id} className="mb-2">
                             <Card.Body>
                                 <div className='float-right'>
-                                <a href={book.link}><Button variant="outline-secondary" className="mr-2">View</Button></a>
-                                <Button variant="secondary" onClick={() => this.deleteBook(book._id)}>Delete</Button>
+                                    <a href={book.link}><Button variant="outline-secondary" className="mr-2">View</Button></a>
+                                    <Button variant="secondary" onClick={() => this.deleteBook(book._id)}>Delete</Button>
                                 </div>
                                 <Card.Title>
-                                {book.title}
+                                    {book.title}
                                 </Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">
-                                Written by {book.authors}
+                                    Written by {book.authors}
                                 </Card.Subtitle>
-                                {
-                                book.link === undefined
+                                {book.link === undefined
                                     ? <span></span>
-                                    : <img className="float-left mr-4" src={book.image} alt={book.title} />
-                                }
+                                    : <img className="float-left mr-4" src={book.image} alt={book.title} />}
                                 <Card.Text>
                                 {book.description}
                                 </Card.Text>
