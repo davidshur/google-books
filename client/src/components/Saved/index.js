@@ -22,8 +22,9 @@ class Saved extends Component {
     }
 
     deleteBook(id) {
-        axios.delete(`/api/books/${id}`);
-        this.setState({ books: this.state.books.filter(book => book._id !== id) });
+        axios.delete(`/api/books/${id}`)
+            .then(this.setState({ books: this.state.books.filter(book => book._id !== id) }))
+            .catch(err => console.log(err));
     }
 
     search = async () => {
